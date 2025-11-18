@@ -1,8 +1,13 @@
 <?php
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-$x = $_POST["btn"];
+header("Content-type:application/pdf");
+header("Content-Disposition:attachment;filename=yahya iraamane cv.pdf'");
+readfile("yahya iraamane cv.pdf");
 
-echo $x;
+
+}
+
 
 ?>
