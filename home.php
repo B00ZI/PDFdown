@@ -84,11 +84,18 @@
             a simple php projict learning how to make a btn downloud a pdf
         </p>
 
-        <form action="downlod.php" method="post">
-            <button name="btn" value="cv" class="card-btn">Download My CV </button>
-        </form>
+            <button id="btn" class="card-btn">Download My CV </button>
+       
     </div>
 
+    <script>
+        const btn = document.getElementById("btn")
+        btn.addEventListener("click" , runPDFphp)
+        async function runPDFphp(){
+            resulte =  await fetch("downlod.php")
+            console.log(resulte)
+        }
+    </script>
 </body>
 
 </html>
