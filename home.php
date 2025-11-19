@@ -72,6 +72,15 @@
             background: #333;
 
         }
+
+        .disabled {
+            background: #333;
+
+        }
+
+        .no-hover {
+            background-color: #888 !important ;
+        }
     </style>
 
 </head>
@@ -84,16 +93,31 @@
             a simple php projict learning how to make a btn downloud a pdf
         </p>
 
-            <button id="btn" class="card-btn">Download My CV </button>
-       
+        <button id="btn" class="card-btn">Download My CV </button>
+        <a id="blobUrl" style="display: none" ;>jenjnfd</a>
+
     </div>
 
     <script>
         const btn = document.getElementById("btn")
-        btn.addEventListener("click" , runPDFphp)
-        async function runPDFphp(){
-            resulte =  await fetch("downlod.php")
-            console.log(resulte)
+        const blobUrl = document.getElementById("blobUrl")
+
+        btn.addEventListener("click", runPDFphp)
+        async function runPDFphp() {
+            let resulte = await fetch("downlod.php")
+            let blobRes = await resulte.blob()
+            let blobResURL = await URL.createObjectURL(blobRes)
+
+            blobUrl.href = blobResURL
+            blobUrl.download = "yahya iraamane cv.pdv"
+            blobUrl.click()
+
+            btn.innerText = "downloded"
+            btn.disabled = true
+            btn.classList.add("disabled")
+            btn.classList.remove("card-btn:hover")
+            btn.classList.add("no-hover");
+
         }
     </script>
 </body>
